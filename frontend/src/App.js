@@ -1,11 +1,8 @@
-import './App.css';
+import React from "react";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
-  return (
-    <div>
-     
-    </div>
-  );
+  return <SearchPage />;
 }
 
 export default App;

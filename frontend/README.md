@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Intelligent Code Snippet Search with AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a MERN stack application that allows users to search code snippets stored in MongoDB and receive AI-augmented suggestions to improve or generate relevant code examples. The application follows a **search-first, AI-enhanced** design approach.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- 🔍 Search code snippets using MongoDB **text indexing**
+- 🤖 AI-augmented suggestions using OpenAI API
+- ⭐ Rate code snippets (1–5 star scale)
+- ❤️ Save snippets as favorites
+- ⚡ Fast search with indexed queries
+- 🧩 Clean separation of frontend, backend, and AI services
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+### Frontend
+- React.js
+- Material-UI (MUI)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+- OpenAI API
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🧠 Architecture Overview
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. User enters a search query in the React UI  
+2. Backend searches MongoDB using text indexes  
+3. Search results are returned immediately  
+4. AI is **conditionally invoked** to:
+   - Improve existing snippets, or
+   - Provide a fallback suggestion if no snippets are found  
+5. Results and AI suggestions are displayed separately in the UI  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> MongoDB is the **primary source of truth**.  
+> AI acts only as an **enhancement layer**.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🔎 Sample Search Keywords
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Since this is a demo with a limited dataset, try searching with keywords like:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `jwt`
+- `authentication`
+- `middleware`
+- `mongodb`
+- `pagination`
+- `node`
+- `express`
+- `security`
+- `bcrypt`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+These keywords match the sample snippets stored in the database.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ⭐ Rating & Favorite Design Note
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Ratings are implemented using a **1–5 star scale**
+- Favorites and ratings are stored at the snippet level
+- User authentication is intentionally omitted to keep the focus on:
+  - Search performance
+  - MongoDB indexing
+  - AI integration
 
-### Code Splitting
+The backend design is modular and can be extended to support user-based authentication if required.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🤖 AI Integration Note
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The application integrates OpenAI to generate or enhance code snippets.  
+If the OpenAI API quota is exceeded, the system **gracefully falls back** by returning a clear message while maintaining core search functionality.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## ✅ How to Run the Project
 
-### Advanced Configuration
+### Backend
+```bash
+cd backend
+npm install
+node src/server.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Frontend
+npm install
+npm start
 
-### Deployment
+🧪 API Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Basic endpoint testing is provided for the search API to verify:
 
-### `npm run build` fails to minify
+MongoDB text search
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Indexed query performance
+
+API response structure
+
+📌 Conclusion
+
+This project demonstrates a clean MERN architecture with efficient database search and practical AI augmentation. The focus is on clarity, performance, and extensibility rather than overengineering.
