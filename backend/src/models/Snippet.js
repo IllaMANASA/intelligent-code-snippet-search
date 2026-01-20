@@ -33,4 +33,4 @@ snippetSchema.index({
   tags: "text",
   code: "text",
 })
-module.exports = mongoose.Model("Snippet",snippetSchema);
+module.exports = mongoose.model("Snippet",snippetSchema);
