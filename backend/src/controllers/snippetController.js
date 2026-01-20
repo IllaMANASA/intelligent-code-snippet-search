@@ -1,4 +1,5 @@
 const Snippet = require("../models/Snippet");
+const { getAISuggestion } = require("../services/aiService");
 
 // @desc    Search code snippets
 // @route   GET /api/snippets/search
@@ -18,15 +19,24 @@ const searchSnippets = async (req, res) => {
       .sort({ score: { $meta: "textScore" } })
       .limit(5);
 
+    let aiSuggestion = null;
+
+    // Call AI only if useful
+    if (snippets.length > 0 || snippets.length === 0) {
+      aiSuggestion = await getAISuggestion(query, snippets);
+    }
+
     res.status(200).json({
       count: snippets.length,
       snippets,
+      aiSuggestion,
     });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error while searching snippets" });
   }
 };
+
 
 // @desc    Rate a snippet
 // @route   PUT /api/snippets/:id/rate
